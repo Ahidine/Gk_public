@@ -18,7 +18,7 @@ class CreateParentsTable extends Migration
             $table->string('nom_complet');
             $table->string('type_parite');
             $table->string('tel_mobile');
-            $table->string('tel_fixe');
+            $table->string('tel_fixe')->nullable();
             $table->text('adresse')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
