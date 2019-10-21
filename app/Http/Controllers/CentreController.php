@@ -75,7 +75,7 @@ class CentreController extends Controller
         $pays=Pays::all();
         $responsables = Responsable::all();
         $centre->ville;
-        return view('centres.edit',compact('centre','paysCentre','responsables','paysVille','pays'));
+        return view('Centres/edit',compact('centre','paysCentre','responsables','paysVille','pays'));
     }
 
 
