@@ -83,7 +83,7 @@ class ModuleController extends Controller
      * @param  \App\Module  $module
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Module $module)
+    public function destroy($module)
     {
         //
         $module =Module::find($module);
