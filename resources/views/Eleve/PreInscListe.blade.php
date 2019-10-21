@@ -30,7 +30,7 @@
                         {{ __('Age') }}
                       </th>
                       <th>
-                        {{ __('Numéro') }}
+                        {{ __('Téléphone') }}
                       </th>
                       <th>
                         {{ __('Commentaire') }}
