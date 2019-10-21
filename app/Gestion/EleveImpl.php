@@ -75,7 +75,7 @@ use App\Absence;
  			$pere->tel_fixe=$request->fixe;
  		}
  		else
- 			$pere->email=null;
+ 			$pere->tel_fixe=null;
         
  		if ($request->has('email_pere')) {
  			$pere->email=$request->email_pere;
@@ -94,7 +94,7 @@ use App\Absence;
  			$mere->tel_fixe=$request->fixe;
  		}
  		else
- 			$pere->email=null;
+ 			$pere->tel_fixe=null;
         
  		if ($request->has('email_mere')) {
  			$mere->email=$request->email_mere;
