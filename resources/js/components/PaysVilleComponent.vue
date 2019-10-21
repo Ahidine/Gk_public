@@ -20,7 +20,8 @@
 				</div>
 			</div>
 		</div-->
-		<div class="row" v-if="villes">
+        <p> test </p>
+		<div class="row">
 			<label class="col-sm-2 col-form-label">Ville</label>
 			<div class="col-sm-10">
 				<div class="form-group">
