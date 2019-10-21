@@ -79,7 +79,7 @@
       </div>
     </div>
          <div class="row">
-          <label class="col-sm-2 col-form-label">Numéro </label>
+          <label class="col-sm-2 col-form-label">Téléphone </label>
           <div class="col-sm-10">
             <div class="form-group">
              <input name="numero" type="number"  class="form-control" required>
