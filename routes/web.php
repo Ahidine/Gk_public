@@ -210,7 +210,7 @@ Route::group(['middleware' => ['role:Responsable']], function ()
 Route::group(['middleware' => ['role:Responsable_Pedagogique']], function () 
 {
 
-  Route::get('Responsable_Pedagogique/home', 'Respo_tech@index');
+  Route::get('Responsable_Pedagogique/home', 'Respo_Tech@index');
 
 });
   ############################## Eleve  ########################################
