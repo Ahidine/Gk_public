@@ -86,6 +86,9 @@ class ModuleController extends Controller
     public function destroy(Module $module)
     {
         //
+        $module =Module::find($module);
+        $module->delete();
+        return 0;
     }
     public function getModulesByGroupe($groupe)
     {
