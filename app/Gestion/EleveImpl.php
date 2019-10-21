@@ -72,7 +72,7 @@ use App\Absence;
 
                 
  		if ($request->fixe) {
- 			$pere->tel_fixe==$request->fixe;
+ 			$pere->tel_fixe=$request->fixe;
  		}
  		else
  			$pere->email=null;
@@ -91,7 +91,7 @@ use App\Absence;
  		$mere->type_parite=0;
  		$mere->tel_mobile=$request->mobile_mere;
  		if ($request->fixe) {
- 			$mere->tel_fixe==$request->fixe;
+ 			$mere->tel_fixe=$request->fixe;
  		}
  		else
  			$pere->email=null;
