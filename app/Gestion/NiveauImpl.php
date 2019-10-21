@@ -52,7 +52,7 @@ class NiveauImpl implements NiveauInterface
 	public function UpdateModule(Request $request,$niveau,$id)
 	{
 
-       // $niveau->module()->update(['niveau_id'=> null]);
+        $niveau->module()->update(['niveau_id'=> null]);
         if ($request->module_id) 
        {
 
