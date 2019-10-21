@@ -69,7 +69,7 @@ use App\Absence;
  		$pere->nom_complet=$request->pere_nom;
  		$pere->type_parite=1;
  		$pere->tel_mobile=$request->mobile_pere;
- 		$pere->tel_fixe=($request->has('tel_fixe') ? $request->fixe : Null ) ;
+ 		$pere->tel_fixe=($request->has('fixe') ? $request->fixe : null ) ;
  		if ($request->has('email_pere')) {
  			$pere->email=$request->email_pere;
  		}
@@ -83,7 +83,7 @@ use App\Absence;
  		$mere->nom_complet=$request->mere_nom;
  		$mere->type_parite=0;
  		$mere->tel_mobile=$request->mobile_mere;
- 		$mere->tel_fixe=($request->has('tel_fixe') ? $request->fixe : Null ) ;
+ 		$mere->tel_fixe=($request->has('fixe') ? $request->fixe : null ) ;
  		if ($request->has('email_mere')) {
  			$mere->email=$request->email_mere;
  		}
