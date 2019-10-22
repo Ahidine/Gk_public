@@ -158,7 +158,7 @@ public function ListePrAbsences()
     ->select('ville.*')
     ->get();
     $employes =$this->getAllEmployes();
-    return view('Employe.absences',compact('villes','employes'));
+    return view('Employe/Absences',compact('villes','employes'));
 }
 public function getAllEmployes()
 {
