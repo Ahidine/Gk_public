@@ -3,33 +3,33 @@
 		<table id="datatables" class="table table-striped table-no-bordered table-hover">
 			<thead class="text-primary">
 				<tr> 
-					<th width="10%">Nom</th>
-					<th width="10%">Prénom</th>
-					<th width="10%">Sex</th>
-					<th width="20%">Centres</th>
-					<th width="10%">Fonction </th>
-					<th width="10%">Date d'affectation </th>
-					<th width="30%" class="text-center">Actions</th>
+					<th >Nom</th>
+					<th >Prénom</th>
+					<th >Sex</th>
+					<th >Centres</th>
+					<th >Fonction </th>
+					<th >Date d'affectation </th>
+					<th  class="text-center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr v-for="em in employes">
-					<td width="10%" class="text-center">{{ em.nom }}</td>
-					<td  width="10%"class="text-center">{{ em.prenom }}</td>
+					<td   class="text-center">{{ em.nom }}</td>
+					<td   class="text-center">{{ em.prenom }}</td>
 					<td v-if="em.sex" class="text-center">
 						Homme
 					</td>
 					<td width="10%" v-else class="text-center">
 						Femme
 					</td>
-					<td width="20%" class="text-center">
+					<td   class="text-center">
 						<select   class="browser-default custom-select text-center" data-size="7" data-style="select-with-transition"    >
 							<option  v-for="c in em.centre"  > {{c.nom}}</option>
 						</select>
 					</td>
-					<td width="10%" class="text-center">{{ em.fonction }}</td>
-					<td width="10%" class="text-center">{{ em.date_affectation }}</td>
-					<td width="30%" class="td-actions text-center">
+					<td   class="text-center">{{ em.fonction }}</td>
+					<td   class="text-center">{{ em.date_affectation }}</td>
+					<td  class="td-actions text-center">
 						<form  method="post" @submit.prevent="Suppsubmit(em.id)">
 							<a rel="tooltip" class="btn btn-info btn-link" href="#" data-original-title="" title="details personnel" v-on:click="getWorkerInfo(em.id) " data-toggle="modal" data-target=".bd-info-modal">
 								<i class="material-icons">person</i>
