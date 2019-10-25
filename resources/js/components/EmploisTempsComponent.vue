@@ -375,14 +375,6 @@ export default {
 				axios.get('/getEmploisTempsByGroupe/'+this.groupe)
 				.then(({data})=>{
 					this.emplois = data.emplois
-					//console.log(this.emplois[0])
-					this.trimestre=data.trimestre
-					this.date_debut=data.trimestre[0].trimestre.date_debut
-					this.date_fin=data.trimestre[0].trimestre.date_fin
-					this.jours=data.jours
-			//	console.log(this.trimestre.date_debut.getMonth())
-				//console.log(this.emplois)
-				//console.log(this.jours)
 				if(this.emplois.length<1) {
 					$.notify({
 						icon: "error",
@@ -397,7 +389,15 @@ export default {
 					});
 				}
 				else
-					this.show=false
+                {
+                	this.trimestre=data.trimestre
+					this.date_debut=data.trimestre[0].trimestre.date_debut
+					this.date_fin=data.trimestre[0].trimestre.date_fin
+					this.jours=data.jours
+                    this.show=false
+                }
+                
+					
 
 
 
