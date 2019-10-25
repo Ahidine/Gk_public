@@ -15,6 +15,9 @@ class EmploisTempsController extends Controller
   public function getEmploisTempsByGroupe($id)
   {
     $trimestre=Emplois_temps::with('trimestre')->where('groupe_id',$id)->distinct()->get('trimestre_id');
+    $jours=Jours::all();
+    if (sizeof($trimestre) > 0) {
+      
     $emplois =Emplois_temps::with(['prof'=> function($q)
     {
       $q->with('employe');
@@ -23,18 +26,9 @@ class EmploisTempsController extends Controller
     ->where('trimestre_id',$trimestre[0]->trimestre_id)
     ->orderBy('jour_id')
     ->get();
+   }
 
-    $jours=Jours::all();
-   // $ids=$emplois->pluck('jour_id');
-
-  /*  foreach ($jours as $j) {
-      if(!($ids->contains($j->id)))
-      {
-
-        $emplois->push($j);
-      }
-    }
-    return $emplois;*/
+    $emplois = '';
 
 
     return compact('jours','emplois','trimestre');
