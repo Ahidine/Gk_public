@@ -243,7 +243,7 @@
 
 								<div class="row">
 									<div class=" col-sm-4 text-right">
-										<select  class="browser-default custom-select"
+										<select  id="selectYear" class="browser-default custom-select"
 										@change="getPaiementByYear(eleve.id,$event.target.value)">
 										<option  v-for="y in years" :value="y" :selected="y==currentYear" > {{y}}</option>
 									</select>
@@ -374,6 +374,7 @@ export default {
 			axios.get('/getPaiementByYear/'+id+'/'+year)
 			.then(({data})=>{
 				//console.log(data)
+                $("#selectYear").val("currentYear");
 				this.paiements = data
 			})
 
