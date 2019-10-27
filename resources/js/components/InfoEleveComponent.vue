@@ -353,6 +353,7 @@ export default {
 				this.parents = data.eleve_info.parents
 				this.paiements = data.eleve_paiement
 				this.eleve = data.eleve_info
+                $("#selectYear").val("this.currentYear");
 				if (this.parents[0].type_parite) {
 					this.pere=this.parents[0]
 					this.mere=this.parents[1]
@@ -374,7 +375,6 @@ export default {
 			axios.get('/getPaiementByYear/'+id+'/'+year)
 			.then(({data})=>{
 				//console.log(data)
-                $("#selectYear").val("currentYear");
 				this.paiements = data
 			})
 
