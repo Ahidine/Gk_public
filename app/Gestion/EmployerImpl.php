@@ -103,7 +103,7 @@ class EmployerImpl implements EmployerInterface
 			$employe->delete();
 			$employe->user()->delete();
 			break;
-			case 'Responsable_Pedagogique':
+			case 'Responsable_pedagogique':
 			$employe->responsable_technique()->delete();
 			$employe->delete();
 			$employe->user()->delete();
