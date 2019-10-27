@@ -27,7 +27,7 @@ class EmploisTempsController extends Controller
     ->orderBy('jour_id')
     ->get();
    }
-
+    else
     $emplois = '';
 
 
