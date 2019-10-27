@@ -38,9 +38,7 @@
 		data()
 		{
 			return {
-				rows :[
-						{},
-					  ],
+				rows :[],
 
 			}
 		},
