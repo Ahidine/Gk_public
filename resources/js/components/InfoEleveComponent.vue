@@ -245,7 +245,7 @@
 									<div class=" col-sm-4 text-right">
 										<select  class="browser-default custom-select"
 										@change="getPaiementByYear(eleve.id,$event.target.value)">
-										<option  v-for="y in years" :value="y" :selected="y=currentYear" > {{y}}</option>
+										<option  v-for="y in years" :value="y" :selected="y==currentYear" > {{y}}</option>
 									</select>
 								</div>
 							</div>
