@@ -245,8 +245,7 @@
 									<div class=" col-sm-4 text-right">
 										<select  class="browser-default custom-select"
 										@change="getPaiementByYear(eleve.id,$event.target.value)">
-										<option   selected hidden>Année !</option>
-										<option  v-for="y in years" :value="y" > {{y}}</option>
+										<option  v-for="y in years" :value="y" :selected="y=currentYear" > {{y}}</option>
 									</select>
 								</div>
 							</div>
@@ -302,11 +301,13 @@ export default {
 			mere : {},
 			years: [],
 			paiements : [],
+            currentYear:'',
 
 
 		}
 	},
 	mounted() {
+        this.currentYear=new Date().getFullYear();
 		for (var i = new Date().getFullYear()+2 ; i >= new Date().getFullYear()-5; i--) {
 			this.years.push(i)
 		}
