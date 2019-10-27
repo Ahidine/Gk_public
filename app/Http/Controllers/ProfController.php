@@ -72,16 +72,18 @@ class ProfController extends Controller
         $employe->setAttribute('anciennete',$request->anciennete);  
         $prof=$AdminImp->AddUser($employe,'Professeur');
 
-
-        for ($i=0; $i < sizeof($request->diplome) ; $i++)
-        { 
-            $diplome = new Diplome;
-            $diplome->intitule=$request->diplome[$i];
-            $diplome->ecole=$request->ecole[$i];
-            $diplome->specialite=$request->specialite[$i];
-            $diplome->date_obtention=$request->date_obtention[$i];
-            $diplome->prof_id=$prof->id;
-            $diplome->save();
+        if($request->diplome)
+        {
+            for ($i=0; $i < sizeof($request->diplome) ; $i++)
+            { 
+                $diplome = new Diplome;
+                $diplome->intitule=$request->diplome[$i];
+                $diplome->ecole=$request->ecole[$i];
+                $diplome->specialite=$request->specialite[$i];
+                $diplome->date_obtention=$request->date_obtention[$i];
+                $diplome->prof_id=$prof->id;
+                $diplome->save();
+            }
         }
 
             /*  for ($i=0; $i < sizeof($request->groupes) ; $i++)
