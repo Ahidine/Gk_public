@@ -353,7 +353,7 @@ export default {
 				this.parents = data.eleve_info.parents
 				this.paiements = data.eleve_paiement
 				this.eleve = data.eleve_info
-                $("#selectYear").val("this.currentYear");
+               // $("#selectYear").val("this.currentYear");
 				if (this.parents[0].type_parite) {
 					this.pere=this.parents[0]
 					this.mere=this.parents[1]
