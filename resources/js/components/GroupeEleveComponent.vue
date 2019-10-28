@@ -1,5 +1,16 @@
 <template>
   <div>
+     <div class="row">
+    <label class="col-sm-2 col-form-label"> Centre </label>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <select  class="browser-default custom-select" name="centre"  v-on:click="onChangeCentre($event.target.value)">
+          <option v-for="c in centres" :value="c.id" :selected="c.id==Centre.id" >{{c.nom}}</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
     <h4 class="info-text">Quel niveau ? </h4>
     <div class="row">
       <div class="col-md-4 ml-auto mr-auto">
@@ -109,22 +120,25 @@ export default {
       groupes : [],
       nbr_insc : {},
       niveau : '',
+      centres: [],
 
       Centre:this.centre,
     }
   },
   mounted() {
-
-   /* axios.get('/Gk/public/getNiveau')
-    .then(({data})=>{
-      this.niveau =data
-    })*/
+   axios.get('/getAllCentres')
+   .then(({data})=>{   
+    this.centres =data
+  })
   },
   methods:
   {
-    test() {
-                //console.log('testtestetst')
-            },
+  onChangeCentre(e) {
+    axios.get('/getCentres/'+e)
+   .then(({data})=>{   
+    this.Centre =data
+  })
+    },
     onChange(e) {
       //console.log(this.Centre.id)
       this.groupes = []
