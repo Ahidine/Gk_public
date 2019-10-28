@@ -127,7 +127,7 @@ export default {
   },
   mounted() {
    axios.get('/getAllCentres')
-   .then(({data})=>{   
+   .then(({data})=>{  
     this.centres =data
   })
   },
@@ -135,7 +135,8 @@ export default {
   {
   onChangeCentre(e) {
     axios.get('/getCentres/'+e)
-   .then(({data})=>{   
+   .then(({data})=>{
+    this.groupes=[]
     this.Centre =data
   })
     },
