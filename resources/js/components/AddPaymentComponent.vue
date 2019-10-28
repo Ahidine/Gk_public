@@ -29,7 +29,7 @@
 						<tr> 
 							<th>Module</th>
 							<th  class="text-center">Montant A Payer</th>
-							<th>Mode </th>
+							<th>Mode de paiement </th>
 							<th  class="text-center">Date</th>
 							<th> Paye</th>
 
@@ -56,7 +56,7 @@
 
 							<td :class="'form-group'">
 								<select class="browser-default custom-select" name="mode_paiement[]" data-size="" data-style="select-with-transition" title="Mode de Paiment" required>
-									<option selected hidden value >Mode!</option>
+									<option value="None" selected >None</option>
 									<option value="Espece"> Espèce </option>
 									<option value="Par carte"> Par carte </option>
 									<option value="Virement"> Virement </option>
@@ -85,7 +85,7 @@
 						<tr> 
 							<th>Tranche</th>
 							<th class="text-center">Montant</th>
-							<th>Mode </th>
+							<th>Mode de paiement</th>
 							<th  class="text-center">Date</th>
 							<th>Payé</th>
 						</tr>
@@ -110,7 +110,7 @@
 
 							<td class="form-group">
 								<select class="browser-default custom-select " name="mode_paiement[]" data-size="" data-style="select-with-transition" title="Mode de Paiment" required>
-									<option selected hidden value>Mode de Paiement</option>
+									<option value="None" selected >None</option>
 									<option value="Espece"> Espece </option>
 									<option value="Cheque"> Par carte </option>
 									<option value="Virement"> Virement </option>
