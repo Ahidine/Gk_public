@@ -54,6 +54,7 @@ use App\Absence;
  		$eleve->nationalite=$request->nationalite;
  		$eleve->adresse=$request->adresse;
  		$eleve->Est_Inscrit=1;
+        $eleve->centre_id=$request->centre;
  		$eleve->groupe_id=$request->groupe_id;
  		if($request->commerciale_interne)
  			$eleve->responsable_commerciale_interne_id=$request->commerciale_interne;
