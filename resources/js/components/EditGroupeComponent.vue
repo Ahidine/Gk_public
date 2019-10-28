@@ -356,7 +356,7 @@ export default {
 
 			makeDate(date,days)
 			{
-				axios.get('/Gk/public/calcateDate/'+btoa(date)+'/'+days)
+				axios.get('/calcateDate/'+btoa(date)+'/'+days)
 				.then(({data})=>{
 					this.form.date_fin=data
 				})
@@ -364,7 +364,7 @@ export default {
 			},
 			AddTrimestre()
 			{
-				axios.post('/Gk/public/Trimestre',this.form)
+				axios.post('/Trimestre',this.form)
 				.then(({data})=>{
 					$.notify({
 						icon: "done",
