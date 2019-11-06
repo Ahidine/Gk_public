@@ -1,4 +1,4 @@
-@extends('Admin.dashboard', ['activePage' => 'abs_eleve', 'menuParent' => 'Gestions_inscriptions', 'titlePage' => __('La liste des inscrits')])
+@extends('Admin.dashboard', ['activePage' => 'abs_eleve', 'menuParent' => 'Gestions_inscriptions', 'titlePage' => __('La liste des absences')])
 
 @section('content')
 <div class="content">

@@ -324,7 +324,7 @@ export default {
 		getListeAbsences() {
 			if ($('#centre').val()) 
 			{
-			axios.get('/Gk_public-master/public/getListeByCentre/'+this.centre)
+			axios.get('/getListeByCentre/'+this.centre)
 			.then(({data})=>{
 				this.students =data
 				this.show=false
@@ -353,7 +353,7 @@ export default {
 
 		},
 		getAbsenceStudent(id) {
-			axios.get('/Gk_public-master/public/getAbsenceStudent/'+id)
+			axios.get('/getAbsenceStudent/'+id)
 			.then(({data})=>{
 				this.eleve =data.eleve
 				this.absences=data.absences
@@ -362,7 +362,7 @@ export default {
 
 		},
 		getAbsenceStudentByYearMonth(month,id) {
-			axios.get('/Gk_public-master/public/getAbsenceStudent/'+id+'/'+this.annee+'/'+month)
+			axios.get('/getAbsenceStudent/'+id+'/'+this.annee+'/'+month)
 			.then(({data})=>{
 				this.eleve =data.eleve
 				this.absences=data.absences
@@ -372,7 +372,7 @@ export default {
 		},
 		AddAbsencesStudent(id)
 		{
-			axios.post('/Gk_public-master/public/AddAbsenceStudent/'+id,this.form)
+			axios.post('/AddAbsenceStudent/'+id,this.form)
 			.then(({data})=>{
 				//console.log(data)
 				$('.bd-AddAbsences-modal').modal('hide')
@@ -399,7 +399,7 @@ export default {
 		getCentre(id)
 		{
 			this.indice=false
-			axios.get('/Gk_public-master/public/getCentresByVille/'+id)
+			axios.get('/getCentresByVille/'+id)
 			.then(({data})=>{
 				this.centres =data
 				//console.log(data.length)
