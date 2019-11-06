@@ -132,7 +132,7 @@ export default {
 			this.date_fin=data.trimestre[0].trimestre.date_fin
 
 		})
-		axios.get('/getGroupeByCentre/'+this.groupe.id)
+		axios.get('/getGroupeByCentre/'+this.groupe.centre_id)
 		.then(({data})=>{
 			groupes : {}
 			this.groupes = data.groupe

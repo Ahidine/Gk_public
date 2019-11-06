@@ -32,7 +32,7 @@ class EmploisTempsController extends Controller
       ->get();
     }
     else
-    $emplois = '';
+      $emplois = '';
 
 
     return compact('jours','emplois','trimestre');
@@ -109,135 +109,135 @@ public function getEmploisByCentre($id)
 public function getEmploisByGroupe()
 {
 
-        return view('Emplois.ByGroupe');
-      }
-      public function getGroupeByCentre($id)
-      {
-       $groupe = Groupe::where('centre_id',$id)->get();
-       $prof = DB::table('professeur as p')
-                    ->select('p.id as id_prof', 'em.*')
-                    ->join('employe as em', 'em.id', '=', 'p.employe_id')
-                    ->join('employe_centre as c', 'c.employe_id', '=', 'em.id')
-                    ->where('c.centre_id',$id)
-                    ->get();
-       $salles = Salle::where('centre_id',$id)->get();
-       $jours=Jours::all();
+  return view('Emplois.ByGroupe');
+}
+public function getGroupeByCentre($id)
+{
+ $groupe = Groupe::where('centre_id',$id)->get();
+ $prof = DB::table('professeur as p')
+ ->select('p.id as id_prof', 'em.*')
+ ->join('employe as em', 'em.id', '=', 'p.employe_id')
+ ->join('employe_centre as c', 'c.employe_id', '=', 'em.id')
+ ->where('c.centre_id',$id)
+ ->get();
+ $salles = Salle::where('centre_id',$id)->get();
+ $jours=Jours::all();
 
-        
+ 
 
-       return compact('groupe','prof','salles','jours');
+ return compact('groupe','prof','salles','jours');
 
-     }
-     public function createEmplois()
-     {
+}
+public function createEmplois()
+{
 
-       return view('Emplois.CreateEmplois');
-     }
-     public function EmploieCreate(Request $request)
-     {
+ return view('Emplois.CreateEmplois');
+}
+public function EmploieCreate(Request $request)
+{
  //return $request->all();
-       for ($i=0; $i <sizeof($request->jours) ; $i++) 
-       { 
-        $emplois= New Emplois_temps;
-        $emplois->groupe_id=$request->groupe;
-        $emplois->trimestre_id=$request->trimestre;
-        $emplois->heure_debut=$request->heureD[$i];
-        $emplois->heure_fin=$request->heureF[$i];
-        $emplois->prof_id=$request->prof[$i];
-        $emplois->salle_id=$request->salles[$i];
-        $emplois->jour_id=$request->jours[$i];
-        $emplois->centre_id=$request->centre;
-        $emplois->module_id=$request->modules[$i];
-        $emplois->save();
-      }
+ for ($i=0; $i <sizeof($request->jours) ; $i++) 
+ { 
+  $emplois= New Emplois_temps;
+  $emplois->groupe_id=$request->groupe;
+  $emplois->trimestre_id=$request->trimestre;
+  $emplois->heure_debut=$request->heureD[$i];
+  $emplois->heure_fin=$request->heureF[$i];
+  $emplois->prof_id=$request->prof[$i];
+  $emplois->salle_id=$request->salles[$i];
+  $emplois->jour_id=$request->jours[$i];
+  $emplois->centre_id=$request->centre;
+  $emplois->module_id=$request->modules[$i];
+  $emplois->save();
+}
 
-      session()->put('success','emplois du temps pour le groupe  : '.Groupe::find($request->groupe)->nom_groupe.'  est bien ajouter');
-        return redirect('Emplois_Temps');
-
-
-
-      }
-      function getEmploisByTrimestreByGroupe($t,$g)
-      {
-        $emplois =Emplois_temps::with(['prof'=> function($q)
-        {
-          $q->with('employe');
-        }])->with('groupe','salle','jour','module')
-        ->where('groupe_id',$g)
-        ->where('trimestre_id',$t)
-        ->orderBy('jour_id')
-        ->get();
-        $trimestre=Trimestre::find($t);
-
-        return compact('trimestre','emplois');
-      }
-      function getEmploisByTrimestreByProf($t,$p)
-      {
-        $emplois =Emplois_temps::with(['prof'=> function($q)
-        {
-          $q->with('employe');
-        }])->with('groupe','salle','jour','module','centre')
-        ->where('prof_id',$p)
-        ->where('trimestre_id',$t)
-        ->orderBy('jour_id')
-        ->get();
-        $trimestre=Trimestre::find($t);
-        return compact('trimestre','emplois');
-      }
+session()->put('success','emplois du temps pour le groupe  : '.Groupe::find($request->groupe)->nom_groupe.'  est bien ajouter');
+return redirect('Emplois_Temps');
 
 
-      function getEmploisByTrimestreByModule($t,$m)
-      {
-        $emplois =Emplois_temps::with(['prof'=> function($q)
-        {
-          $q->with('employe');
-        }])->with('groupe','salle','jour','module','centre')
-        ->where('module_id',$m)
-        ->where('trimestre_id',$t)
-        ->orderBy('jour_id')
-        ->get();
-        $trimestre=Trimestre::find($t);
-        return compact('trimestre','emplois');
-      }
-      function getEmploisByTrimestreByCentre($t,$c)
-      {
-        $emplois =Emplois_temps::with(['prof'=> function($q)
-        {
-          $q->with('employe');
-        }])->with('groupe','salle','jour','module','centre')
-        ->where('centre_id',$c)
-        ->where('trimestre_id',$t)
-        ->orderBy('jour_id')
-        ->get();
-        $trimestre=Trimestre::find($t);
-        return compact('trimestre','emplois');
-      }
-      function editEmploisTemps($id)
-      {
-        $groupe = Groupe::find($id);
-        return view('Emplois.EditEmplois',compact('groupe'));
-      }
-      function update(Request $request)
-      {
-         $request->all();
-         Emplois_Temps::where('groupe_id',$request->groupe)->where('trimestre_id',$request->trimestre)->delete();
-      for ($i=0; $i <sizeof($request->jours) ; $i++) 
-       { 
-        $emplois= New Emplois_temps;
-        $emplois->groupe_id=$request->groupe;
-        $emplois->trimestre_id=$request->trimestre;
-        $emplois->heure_debut=$request->heureD[$i];
-        $emplois->heure_fin=$request->heureF[$i];
-        $emplois->prof_id=$request->prof[$i];
-        $emplois->salle_id=$request->salles[$i];
-        $emplois->jour_id=$request->jours[$i];
-        $emplois->centre_id=$request->centre;
-        $emplois->module_id=$request->modules[$i];
-        $emplois->save();
-      }
-   session()->put('success','emplois du temps pour le groupe  : '.Groupe::find($request->groupe)->nom_groupe.'  est bien modifier');
-        return redirect('Emplois_Temps');
 
-      }
+}
+function getEmploisByTrimestreByGroupe($t,$g)
+{
+  $emplois =Emplois_temps::with(['prof'=> function($q)
+  {
+    $q->with('employe');
+  }])->with('groupe','salle','jour','module')
+  ->where('groupe_id',$g)
+  ->where('trimestre_id',$t)
+  ->orderBy('jour_id')
+  ->get();
+  $trimestre=Trimestre::find($t);
 
-    }
+  return compact('trimestre','emplois');
+}
+function getEmploisByTrimestreByProf($t,$p)
+{
+  $emplois =Emplois_temps::with(['prof'=> function($q)
+  {
+    $q->with('employe');
+  }])->with('groupe','salle','jour','module','centre')
+  ->where('prof_id',$p)
+  ->where('trimestre_id',$t)
+  ->orderBy('jour_id')
+  ->get();
+  $trimestre=Trimestre::find($t);
+  return compact('trimestre','emplois');
+}
+
+
+function getEmploisByTrimestreByModule($t,$m)
+{
+  $emplois =Emplois_temps::with(['prof'=> function($q)
+  {
+    $q->with('employe');
+  }])->with('groupe','salle','jour','module','centre')
+  ->where('module_id',$m)
+  ->where('trimestre_id',$t)
+  ->orderBy('jour_id')
+  ->get();
+  $trimestre=Trimestre::find($t);
+  return compact('trimestre','emplois');
+}
+function getEmploisByTrimestreByCentre($t,$c)
+{
+  $emplois =Emplois_temps::with(['prof'=> function($q)
+  {
+    $q->with('employe');
+  }])->with('groupe','salle','jour','module','centre')
+  ->where('centre_id',$c)
+  ->where('trimestre_id',$t)
+  ->orderBy('jour_id')
+  ->get();
+  $trimestre=Trimestre::find($t);
+  return compact('trimestre','emplois');
+}
+function editEmploisTemps($id)
+{
+  $groupe = Groupe::find($id);
+  return view('Emplois.EditEmplois',compact('groupe'));
+}
+function update(Request $request)
+{
+ $request->all();
+ Emplois_Temps::where('groupe_id',$request->groupe)->where('trimestre_id',$request->trimestre)->delete();
+ for ($i=0; $i <sizeof($request->jours) ; $i++) 
+ { 
+  $emplois= New Emplois_temps;
+  $emplois->groupe_id=$request->groupe;
+  $emplois->trimestre_id=$request->trimestre;
+  $emplois->heure_debut=$request->heureD[$i];
+  $emplois->heure_fin=$request->heureF[$i];
+  $emplois->prof_id=$request->prof[$i];
+  $emplois->salle_id=$request->salles[$i];
+  $emplois->jour_id=$request->jours[$i];
+  $emplois->centre_id=$request->centre;
+  $emplois->module_id=$request->modules[$i];
+  $emplois->save();
+}
+session()->put('success','emplois du temps pour le groupe  : '.Groupe::find($request->groupe)->nom_groupe.'  est bien modifier');
+return redirect('Emplois_Temps');
+
+}
+
+}

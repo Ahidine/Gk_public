@@ -72,7 +72,7 @@
 		<div class="card-header card-header-rose text-center">
 			<h4 class="card-title">l'emplois du temps  du groupe : {{ emplois[0].groupe.nom_groupe}}</h4>
 			<h5 class="card-title">Module : {{ emplois[0].module.nom_module}}</h5>
-			<h5> <a v-bind:href="'EditEmplois/'+ groupe">Modifier</a></h5>
+			<h5> <a v-bind:href="'EditEmplois/'+ groupe" class="btn btn-warning">Modifier</a></h5>
 		</div>
 		<div class="card-body">
 			<button class="btn btn-primary float-right" v-on:click="changerStatut()"> autre groupe !</button>
@@ -346,7 +346,7 @@ export default {
 			this.professeurs = data
 
 		})
-		axios.get('//getAllModules')
+		axios.get('/getAllModules')
 		.then(({data})=>{
 			this.modules = data
 

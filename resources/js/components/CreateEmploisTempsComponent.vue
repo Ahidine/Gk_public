@@ -67,19 +67,19 @@
 					<table id="datatables" class="table table-striped">
 						<thead>
 							<tr>
-								<th width="10%" >Jour</th>
-								<th width="20%" >Du </th>
-								<th width="20%" > A </th>
-								<th width="20%" > Professeur </th>
-								<th width="10%" > Module </th>
-								<th width="10%" > Salle </th>
-								<th width="10%" > Action </th>
+									<th width="20%" >Jour</th>
+									<th width="10%" >Du </th>
+									<th width="10%" > A </th>
+									<th width="20%" > Professeur </th>
+									<th width="10%" > Module </th>
+									<th width="20%" > Salle </th>
+									<th width="10%" > Action </th>
 							</tr>
 						</thead>
 						<tbody>
 							<input type="hidden" name="groupe" :value="groupe.id"> 
 							<tr v-for="c in row" >
-								<td width="10%">
+								<td width="20%">
 									<select style="display:block" name="jours[]" class="browser-default custom-select" data-style="select-with-transition" title="" data-size="100" required>
 										<option  selected hidden value>jours</option> 
 										<option v-for="d in Jours" :value="d.id">{{d.jour}}</option>                 
@@ -95,7 +95,7 @@
 										<option v-for="p in Prof" :value="p.id_prof">{{p.nom}}</option>                 
 									</select>
 								</td>
-								<td width="20%"> 
+								<td width="10%"> 
 									<select style="display:block" name="modules[]" class="browser-default custom-select" data-style="select-with-transition" title="" data-size="100" required>
 										<option  selected hidden value>Module !</option>  
 										<option v-for="m in modules" :value="m.module.id">{{m.module.nom_module}}</option>                 
