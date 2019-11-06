@@ -20,7 +20,7 @@ class CreateNiveauTable extends Migration
             $table->integer('max_age');
             $table->timestamps();
         });
-    }
+    }  
 
     /**
      * Reverse the migrations.

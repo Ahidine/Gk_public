@@ -16,7 +16,7 @@ class CreateModuleTable extends Migration
         Schema::create('module', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom_module');
-            $table->bigInteger('niveau_id')->nullable()->unsigned();
+           // $table->bigInteger('niveau_id')->nullable()->unsigned();
             $table->timestamps();
         });
     }

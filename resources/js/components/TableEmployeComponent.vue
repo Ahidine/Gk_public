@@ -1,40 +1,33 @@
 <template>
 	<div>
-		<table id="datatables" class="table table-striped table-no-bordered table-hover">
+		<table id="datatables" class="table table-striped table-no-bordered table-hover" style="width:100% !important">
 			<thead class="text-primary">
 				<tr> 
-					<th >Nom</th>
-					<th >Prénom</th>
-					<th >Sex</th>
-					<th >Centres</th>
-					<th >Fonction </th>
-					<th >Date d'affectation </th>
-					<th  class="text-center">Actions</th>
+					<th style="width: 10 vw;">Nom</th>
+					<th style="width: 10 vw;">Prénom</th>
+					<th style="width: 20 vw;">Centres</th>
+					<th style="width: 10 vw;">Fonction </th>
+					<th style="width: 10 vw;">Date d'affectation </th>
+					<th style="width: 40 vw;" class="text-center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr v-for="em in employes">
-					<td   class="text-center">{{ em.nom }}</td>
-					<td   class="text-center">{{ em.prenom }}</td>
-					<td v-if="em.sex" class="text-center">
-						Homme
-					</td>
-					<td width="10%" v-else class="text-center">
-						Femme
-					</td>
-					<td   class="text-center">
+					<td style="width: 10 vw;"  class="text-center">{{ em.nom }}</td>
+					<td style="width: 10 vw;" class="text-center">{{ em.prenom }}</td>
+					<td style="width: 20 vw;" class="text-center">
 						<select   class="browser-default custom-select text-center" data-size="7" data-style="select-with-transition"    >
 							<option  v-for="c in em.centre"  > {{c.nom}}</option>
 						</select>
 					</td>
-					<td   class="text-center">{{ em.fonction }}</td>
-					<td   class="text-center">{{ em.date_affectation }}</td>
-					<td  class="td-actions text-center">
+					<td style="width: 10 vw;"  class="text-center">{{ em.fonction }}</td>
+					<td style="width: 10 vw;"  class="text-center">{{ em.date_affectation }}</td>
+					<td style="width: 40 vw;" class="td-actions text-center">
 						<form  method="post" @submit.prevent="Suppsubmit(em.id)">
-							<a rel="tooltip" class="btn btn-info btn-link" href="#" data-original-title="" title="details personnel" v-on:click="getWorkerInfo(em.id) " data-toggle="modal" data-target=".bd-info-modal">
+							<button type="button" rel="tooltip" class="btn btn-info btn-link"  data-original-title="" title="details personnel" v-on:click="getWorkerInfo(em.id) " data-toggle="modal" data-target=".bd-info-modal">
 								<i class="material-icons">person</i>
 
-							</a>
+							</button>
 							<a rel="tooltip" class="btn btn-success btn-link edit" title="modifier" 
 							v-bind:href="'/Employe/'+em.id+'/edit'">
 							<i class="material-icons">edit</i>

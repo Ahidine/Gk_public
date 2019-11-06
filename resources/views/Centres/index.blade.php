@@ -18,7 +18,7 @@
 
 
             <div class="table-responsive">
-              <table id="datatables" class="table table-striped table-no-bordered table-hover">
+              <table id="datatables" class="table table-striped table-no-bordered table-hover" style="width: 100% !important;">
                 <thead class="text-primary">
 
                   <th >
@@ -39,9 +39,7 @@
                   <th >
                     {{ __('N Professeurs') }}
                   </th>
-                  <th >
-                    {{ __('Date de création') }}
-                  </th>
+
 
                   <th  >
 
@@ -71,9 +69,6 @@
                     </td>
                     <td >
                       {{ $centre->employe_count }}
-                    </td>
-                    <td >
-                      {{ $centre->created_at}}
                     </td>
                     <td class="td-actions text-right" > 
                       <form action="{{ route('centre.destroy', $centre) }}" method="post">

@@ -9,7 +9,7 @@
             <div class="card-icon">
               <i class="material-icons">recent_actors</i>
             </div>
-            <h4 class="card-title"> Creation d'un emplois du temps <!--a style="float: right;" href="#" class="btn btn-sm btn-rose">Ajouter un Niveau</a--> </h4>
+            <h4 class="card-title"> Modification d'un emplois du temps <!--a style="float: right;" href="#" class="btn btn-sm btn-rose">Ajouter un Niveau</a--> </h4>
 
           </div>
           <div class="card-body">
@@ -17,12 +17,12 @@
 
 
             <div class="table-responsive">
-              <form method="post" action="{{ route('Emplois.store') }}">
+              <form method="post" action="{{ route('Emplois_Temps.update') }}">
                         @csrf
-        @method('post')
+                        @method('put')
          
 <div id="app">
-  <create_emplois_temps-component > </create_emplois_temps-component>
+  <edit-emplois_temps-component :Groupe="{{$groupe}}" > </edit-emplois_temps-component>
 </div>
                    
             </div>

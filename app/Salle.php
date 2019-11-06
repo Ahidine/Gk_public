@@ -21,6 +21,10 @@ class Salle extends Model
 
     //belongTo
 //##########################
+    public function  centre()
+    {
+        return $this->belongsTo('App\Centre');
+    }
 
     //belongToMany
 //##########################

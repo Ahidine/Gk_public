@@ -84,7 +84,7 @@ use App\Absence;
  		else
  			$pere->email=null;
  		
- 		$pere->adresse=$request->adresse1;
+ 		//$pere->adresse=$request->adresse1;
  		$pere->save();
 
  		$mere = New Parents;
@@ -103,7 +103,7 @@ use App\Absence;
  		else
  			$pere->email=null;
  		
- 		$mere->adresse=$request->adresse1;
+ 		//$mere->adresse=$request->adresse1;
  		$mere->save();
 
  		$eleve->parents()->sync([$mere->id,$pere->id]);
@@ -177,6 +177,7 @@ use App\Absence;
 		  else
 		  $absence->motif='none';
 
+		  $absence->seance=$request->seance;
 		  $absence->heure_fin=$request->heure_fin;
 		  $absence->date=$request->date;
 		  $absence->type='Eleve';

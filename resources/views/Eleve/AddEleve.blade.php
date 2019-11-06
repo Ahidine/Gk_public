@@ -87,7 +87,7 @@
 
                    <div class="form-group">
                     <label for="num_mere" class="bmd-label-floating">Numéro de mére</label>
-                    <input type="number" class="form-control" id="num_mere"  name="mobile_mere" required>
+                    <input type="number" class="form-control" id="num_mere"  name="mobile_mere" value="{{$eleve->numero}}" required>
                   </div>
                 </div>
                 <div class="input-group form-control-lg">
@@ -142,17 +142,6 @@
               </div>
             </div>
 
-            <div class="input-group form-control-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fa fa-home" aria-hidden="true"></i>
-                </span>
-              </div>
-              <div class="form-group">
-                <label for="adresse" class="bmd-label-floating">Adresse</label>
-                <input type="text" class="form-control"  id="adresse" name="adresse1" required>
-              </div>
-            </div>
 
         </div>
 

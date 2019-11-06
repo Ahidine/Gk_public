@@ -63,7 +63,7 @@ Route::group(['middleware'=>'auth'],function()
   });
 
   ######################## Admin  ###############################
-  Route::group(['middleware' => ['role:Super_Admin']], function ()
+    Route::group(['middleware' => ['role:Super_Admin']], function ()
   {
 
     Route::get('Admin/home', 'AdminController@index');
@@ -78,6 +78,7 @@ Route::group(['middleware'=>'auth'],function()
       Route::get('getPays','CentreController@getPays');
       Route::get('getCentresByVille/{id}','CentreController@getCentresByVille');
       Route::get('getCentres/{id}','CentreController@getCentres');
+      Route::get('getClassOfCentre/{id}','CentreController@getClassOfCentre');
 
 
 
@@ -151,6 +152,7 @@ Route::group(['middleware'=>'auth'],function()
       Route::resource('Trimestre','TrimestreController');
       Route::get('getAllTrimestre','TrimestreController@getAllTrimestre');
       Route::get('getTrimestreById/{id}','TrimestreController@getTrimestreById');
+      Route::get('getTrimestreOfGroupe/{id}','TrimestreController@getTrimestreOfGroupe');
 
       
 
@@ -179,6 +181,8 @@ Route::group(['middleware'=>'auth'],function()
       Route::get('getEmploisByTrimestreByModule/{t}/{m}','EmploisTempsController@getEmploisByTrimestreByModule');
       Route::get('getEmploisByCentre/{c}','EmploisTempsController@getEmploisByCentre');
       Route::get('getEmploisByTrimestreByCentre/{t}/{c}','EmploisTempsController@getEmploisByTrimestreByCentre');
+      Route::get('EditEmplois/{c}','EmploisTempsController@editEmploisTemps');
+      Route::put('update','EmploisTempsController@update')->name('Emplois_Temps.update');
 
 
       // Pays Routes
@@ -197,7 +201,6 @@ Route::group(['middleware'=>'auth'],function()
 
 
     });
-
   ######################## Responsable Commercial  ###############################
 Route::group(['middleware' => ['role:Responsable']], function ()
 {

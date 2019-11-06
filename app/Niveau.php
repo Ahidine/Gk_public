@@ -16,10 +16,7 @@ class Niveau extends Model
     {
         return $this->hasMany('App\Frais_inscirption');
     }
-   public function module()
-    {
-        return $this->hasMany('App\Module');
-    }
+
        public function paiements()
     {
         return $this->hasMany('App\Paiement');
@@ -32,6 +29,10 @@ class Niveau extends Model
     {
        return $this->belongsToMany('App\Centre','centre_niveau','niveau_id','centre_id')->withPivot('prix', 'devise');
       }
+       public function module()
+    {
+        return $this->belongsToMany('App\Module','niveau_module','niveau_id','module_id');
+    }
 
     //hasOne
 //##########################

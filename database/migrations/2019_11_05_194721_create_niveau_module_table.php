@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSalleTable extends Migration
+class CreateNiveauModuleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateSalleTable extends Migration
      */
     public function up()
     {
-        Schema::create('salle', function (Blueprint $table) {
+        Schema::create('niveau_module', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('num');
-            $table->integer('capacite');
-            $table->bigInteger('centre_id')->nullable()->unsigned();
+            $table->bigInteger('niveau_id')->nullable()->unsigned();
+            $table->bigInteger('module_id')->nullable()->unsigned();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateSalleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salle');
+        Schema::dropIfExists('niveau_module');
     }
 }

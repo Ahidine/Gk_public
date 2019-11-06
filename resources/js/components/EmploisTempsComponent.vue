@@ -72,9 +72,11 @@
 		<div class="card-header card-header-rose text-center">
 			<h4 class="card-title">l'emplois du temps  du groupe : {{ emplois[0].groupe.nom_groupe}}</h4>
 			<h5 class="card-title">Module : {{ emplois[0].module.nom_module}}</h5>
+			<h5> <a v-bind:href="'EditEmplois/'+ groupe">Modifier</a></h5>
 		</div>
 		<div class="card-body">
 			<button class="btn btn-primary float-right" v-on:click="changerStatut()"> autre groupe !</button>
+
 			<div class="row" style="margin-top:20px;">
 				<div class="col-sm-4">
 					<select class="browser-default custom-select"  @change="onChangeTrimestre($event.target.value)" name="trimestre">
@@ -344,7 +346,7 @@ export default {
 			this.professeurs = data
 
 		})
-		axios.get('/getAllModules')
+		axios.get('//getAllModules')
 		.then(({data})=>{
 			this.modules = data
 
@@ -361,7 +363,7 @@ export default {
 			.then(({data})=>{
 				groupes : {}
 				$("#centres").val("none");
-				this.groupes = data
+				this.groupes = data.groupe
 
 
 
@@ -388,16 +390,13 @@ export default {
 						}
 					});
 				}
-				else
-                {
-                	this.trimestre=data.trimestre
+				else{
+					this.trimestre=data.trimestre
 					this.date_debut=data.trimestre[0].trimestre.date_debut
 					this.date_fin=data.trimestre[0].trimestre.date_fin
 					this.jours=data.jours
-                    this.show=false
-                }
-                
-					
+					this.show=false
+				}
 
 
 

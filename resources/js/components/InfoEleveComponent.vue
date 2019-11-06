@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<table class="table" id="datatables">
-			<thead>
+		<table class="table  table-striped table-no-bordered table-hover" id="datatables" style="width:100% !important">
+			<thead class="text-primary">
 				<tr> 
 					<th>Nom</th>
 					<th>Prénom</th>
@@ -222,16 +222,6 @@
 														</div>
 													</div>
 												</div>
-												<div class="row">
-													<label class="col-sm-4 col-form-label">Adresse</label>
-													<div class="col-sm-4">
-														<div class="form-group">
-															<input type="text" readonly :value="mere.adresse" class="form-control">
-														</div>
-													</div>
-												</div>
-
-
 
 											</div>
 										</div>

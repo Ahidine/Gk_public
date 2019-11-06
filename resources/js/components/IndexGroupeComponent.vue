@@ -1,6 +1,6 @@
 <template>
 	<div class="col-md-12 ml-auto mr-auto">
-		<table class="table" id="datatables">
+	<table class="table" id="datatables" style="width:100% !important">
 			<thead class="text-primary">
 				<tr> 
 					<th>Groupe</th>
@@ -246,14 +246,14 @@ export default {
 		getEmploisByGroupe(id)
 		{
 			this.groupe=id
-			axios.get('getEmploisTempsByGroupe/'+id)
+			axios.get('/getEmploisTempsByGroupe/'+id)
 			.then(({data})=>{
 				this.Emplois=data.emplois
 				this.trimestre=data.trimestre
 				this.date_debut=data.trimestre[0].trimestre.date_debut
 				this.date_fin=data.trimestre[0].trimestre.date_fin
 			})
-			axios.get('getPlanningByGroupe/'+id)
+			axios.get('/getPlanningByGroupe/'+id)
 			.then(({data})=>{
 				this.Etude=data
 			})

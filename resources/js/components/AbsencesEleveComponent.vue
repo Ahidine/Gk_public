@@ -105,9 +105,14 @@
 								<form method="post"  @submit.prevent="AddAbsencesStudent(eleve.id)">
 									<div class="row">
 										<div class="form-group col-md-10 ml-auto mr-auto" >
-											<label for="libelle" class="bmd-label-floating">motif</label>
+											<label for="seance" class="bmd-label-floating">Seance</label>
+											<input type="text" name="seance" class="form-control" id="seance" v-model="form.seance">
+										</div>
+										<div class="form-group col-md-10 ml-auto mr-auto" >
+											<label for="libelle" class="bmd-label-floating">Motif</label>
 											<input type="text" name="libelle" class="form-control" id="libelle" v-model="form.motif">
 										</div>
+
 									</div>
 									<br>
 									<div class="row">
@@ -228,13 +233,16 @@
 						<div class="col-md-12 ml-auto mr-auto">
 							<table class="table table-striped table-no-bordered table-hover">
 								<thead class="text-primary">
+									<th>Seance</th>
 									<th>date absence</th>
 									<th>De </th>
 									<th>A</th>
 									<th>Motif</th>
+
 								</thead>
 								<tbody>
 									<tr v-for="a in absences">
+										<td>{{a.seance}}</td>
 										<td>{{a.date}}</td>
 										<td>{{a.heure_debut}}</td>
 										<td>{{a.heure_fin}}</td>
@@ -291,6 +299,7 @@ export default {
 				date : '',
 				motif : '',
 				type : '',
+				seance: '',
 			}
 
 
@@ -315,7 +324,7 @@ export default {
 		getListeAbsences() {
 			if ($('#centre').val()) 
 			{
-			axios.get('/getListeByCentre/'+this.centre)
+			axios.get('/Gk_public-master/public/getListeByCentre/'+this.centre)
 			.then(({data})=>{
 				this.students =data
 				this.show=false
@@ -344,7 +353,7 @@ export default {
 
 		},
 		getAbsenceStudent(id) {
-			axios.get('/getAbsenceStudent/'+id)
+			axios.get('/Gk_public-master/public/getAbsenceStudent/'+id)
 			.then(({data})=>{
 				this.eleve =data.eleve
 				this.absences=data.absences
@@ -353,7 +362,7 @@ export default {
 
 		},
 		getAbsenceStudentByYearMonth(month,id) {
-			axios.get('/getAbsenceStudent/'+id+'/'+this.annee+'/'+month)
+			axios.get('/Gk_public-master/public/getAbsenceStudent/'+id+'/'+this.annee+'/'+month)
 			.then(({data})=>{
 				this.eleve =data.eleve
 				this.absences=data.absences
@@ -363,7 +372,7 @@ export default {
 		},
 		AddAbsencesStudent(id)
 		{
-			axios.post('/AddAbsenceStudent/'+id,this.form)
+			axios.post('/Gk_public-master/public/AddAbsenceStudent/'+id,this.form)
 			.then(({data})=>{
 				//console.log(data)
 				$('.bd-AddAbsences-modal').modal('hide')
@@ -390,7 +399,7 @@ export default {
 		getCentre(id)
 		{
 			this.indice=false
-			axios.get('/getCentresByVille/'+id)
+			axios.get('/Gk_public-master/public/getCentresByVille/'+id)
 			.then(({data})=>{
 				this.centres =data
 				//console.log(data.length)

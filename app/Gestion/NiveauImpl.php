@@ -28,12 +28,14 @@ class NiveauImpl implements NiveauInterface
 		if ($request->module_id) 
 		{
  
-             foreach ($request->module_id as $id_M)
+          /*   foreach ($request->module_id as $id_M)
               {
 	             $m=Module::find($id_M) ;
 	             $m->niveau()->associate($niveau->id);
 	             $m->save();
-        	  }
+        	  }*/
+        	  $niveau->module()->sync($request->module_id);
+
 
         }
 
@@ -56,12 +58,13 @@ class NiveauImpl implements NiveauInterface
         if ($request->module_id) 
        {
 
-		       foreach ($request->module_id as $id_M) 
+		      /* foreach ($request->module_id as $id_M) 
 		        {
 		             $m=Module::find($id_M) ;
 		             $m->niveau()->associate($id);
 		             $m->save();
-		        }
+		        }*/
+		    $niveau->module()->sync($request->module_id);
         }
 
 	}

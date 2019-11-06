@@ -1,46 +1,36 @@
 <template>
-	<div>
-		<table id="datatables" class="table table-striped table-no-bordered table-hover">
+	<div >
+
+		<table id="datatables"  class="table  table-striped table-no-bordered table-hover" style="width:100% !important">
 			<thead class="text-primary">
 				<tr>
-				<th width="10%">Nom</th>
-				<th width="10%">Prénom</th>
-				<th width="10%">Sex</th>
-				<th width="15%"> Centres</th>
-				<th width="10%"> Ancienneté </th>
-				<th width="10%">Nb de séances</th>
-				<th width="10%">Date Affectation</th>
-				<th width="25%" class="text-center"> Actions</th>
+					<th style="width: 10 vw;">Nom</th>
+					<th style="width: 10 vw;">Prénom</th>
+					<th style="width: 20 vw;"> Centres</th>
+					<th style="width: 10 vw;"> Ancienneté </th>
+					<th style="width: 20 vw;">Nb de séances</th>
+					<th style="width: 30 vw;" class="text-center"> Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr v-for="p in prof">
-					<td width="10%" class="text-center">
+					<td style="width: 10 vw;" class="text-center">
 						{{ p.employe.nom }}
 					</td>
-					<td width="10%" class="text-center">
+					<td style="width: 10 vw;" class="text-center">
 						{{ p.employe.prenom }}
-					</td >
-					<td width="10%" class="text-center" v-if="p.employe.sex==1">
-						Homme
-					</td>
-					<td width="10%" class="text-center" v-else>
-						Femme
-					</td> 
-					<td  width="15%" class="text-center">
+					</td > 
+					<td  style="width: 20 vw;" class="text-center">
 						<select   class="browser-default custom-select text-center" data-size="7" data-style="select-with-transition"    >
-						<option  v-for="c in p.employe.centre"  > {{c.nom}}</option>
-					</select>
+							<option  v-for="c in p.employe.centre"  > {{c.nom}}</option>
+						</select>
 					</td> 
-					<td width="10%" class="text-center"> {{ p.anciennete }}</td>
-					<td width="10%" class="text-center">
+					<td style="width: 10 vw;" class="text-center"> {{ p.anciennete }}</td>
+					<td style="width: 20 vw;" class="text-center">
 						{{ p.nombreSeance }}
 					</td>      
-					<td width="10%" class="text-center" >
-						{{ p.employe.date_affectation }}
-					</td>
 
-					<td width="25%" class="td-actions text-center " > 
+					<td style="width: 30 vw;" class="td-actions text-center " > 
 						<form  method="post" @submit.prevent="Suppsubmit(p.id)">
 							<a rel="tooltip" class="btn btn-info btn-link" href="#" data-original-title="" title="details" v-on:click="getProfInfo(p.id) " data-toggle="modal" data-target=".bd-info-modal">
 								<i class="material-icons">person</i>
@@ -99,6 +89,8 @@
 				</tr>
 			</tbody>
 		</table>
+
+
 
 
 		<div class="modal fade bd-info-modal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -214,6 +206,14 @@
 																</div>
 															</div>
 														</div>
+														<div class="row">
+															<label class="col-sm-4 col-form-label">Date d'affectation</label>
+															<div class="col-sm-8">
+																<div class="form-group">
+																	<input type="text" readonly :value="Pr.employe.date_affectation"class="text-center form-control">
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="messages">
@@ -253,10 +253,10 @@
 																	</select>
 																</div>
 																<div class="col-sm-4 text-center">
-																	<input width="100%" readonly class="form-control text-center" v-model="date_debut"> 
+																	<input width="100vw" readonly class="form-control text-center" v-model="date_debut"> 
 																</div>
 																<div class="col-sm-4 text-center">
-																	<input width="100%" readonly class="form-control text-center" v-model="date_fin"> 
+																	<input width="100vw" readonly class="form-control text-center" v-model="date_fin"> 
 																</div>
 
 															</div> 

@@ -369,7 +369,7 @@ export default {
 			})
 		},
 		getAbsencesEmploye(id) {
-			axios.get('Employe/getAbsencesEmploye/'+id)
+			axios.get('/Employe/getAbsencesEmploye/'+id)
 			.then(({data})=>{
 				//console.log('here'+data)
 				$("#mois").val("currentMounth");
@@ -380,7 +380,7 @@ export default {
 
 		},
 		getAbsenceWorkerByYearMonth(month,id) {
-			axios.get('Employe/getAbsencesEmploye/'+id+'/'+this.annee+'/'+month)
+			axios.get('/Employe/getAbsencesEmploye/'+id+'/'+this.annee+'/'+month)
 			.then(({data})=>{
 				this.emp =data.employe
 				this.absences=data.absences

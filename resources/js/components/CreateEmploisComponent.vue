@@ -28,11 +28,11 @@
                     </th>
                     
                     <td v-for="i in rows">
-                    	
-                    	<div :class="'text-center indice'+index" v-if="show">
-                    		<button class="btn btn-primary" type="button" > Add </button>
-                    	</div>
-                    	<div v-if="!show" :class="index">
+                      
+                      <div :class="'text-center indice'+index" v-if="show">
+                        <button class="btn btn-primary" type="button" > Add </button>
+                      </div>
+                      <div v-if="!show" :class="index">
                       <select class="browser-default custom-select " name="prof[]" > 
                         <option selected hidden  > Professeur  ! </option> 
                         
@@ -46,41 +46,41 @@
  
                       </select>
                       <input type="hidden" name="jour[]" :value="j.id">
-                	  </div>
+                    </div>
                     </td>
 
 
                   </tr>
                 </tbody>
-              </table>	
+              </table>  
 </template>
 <script >
 export default {
-	props:['prof','jours','salle'],
-	data()
-	{
-		return {
-			rows :[1,2,3,4],
-			Professeur: this.prof,
-			Jours:this.jours,
-			Salle:this.salle,
-			index:0,
-			show:true,
+  props:['prof','jours','salle'],
+  data()
+  {
+    return {
+      rows :[1,2,3,4],
+      Professeur: this.prof,
+      Jours:this.jours,
+      Salle:this.salle,
+      index:0,
+      show:true,
 
-		}
-	},
-	mounted() {
-		//console.log('here'+this.rows.length)
-	},
-	methods:
-	{
+    }
+  },
+  mounted() {
+    //console.log('here'+this.rows.length)
+  },
+  methods:
+  {
 
-		AddRow() {
-			
-		},
-		RemoveRow(index) {
-			this.rows.splice(this.rows.indexOf(index),1)
-		},
-	}
-}	
+    AddRow() {
+      
+    },
+    RemoveRow(index) {
+      this.rows.splice(this.rows.indexOf(index),1)
+    },
+  }
+} 
 </script>

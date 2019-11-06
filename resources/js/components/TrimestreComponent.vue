@@ -147,7 +147,39 @@
 				</div>
 			</div>
 		</div>
+				<table class="table">
+			<thead>
+				<tr>
+					<th>Trimestre</th>
+					<th>date_début</th>
+					<th>date_fin</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="t in trimestre">
+					<td>
 
+						<input type="text" :value="t.nom" >
+				
+					</td>
+					<td><input type="text" :value="t.date_debut" ></td>
+					<td><input type="text" :value="t.date_fin" ></td>
+					<td>
+						<form  method="post" @submit.prevent="SuppTrimestre(t)">
+							<button type="submit" class="btn btn-danger btn-link" data-original-title="" title="supprimer" >
+								<i class="material-icons">close</i>
+								<div class="ripple-container"></div>
+							</button>
+						</form>
+
+						      
+					</td>
+				</tr>
+
+
+			</tbody>
+		</table>
 
 	</div>
 </template>

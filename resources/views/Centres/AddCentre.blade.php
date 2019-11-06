@@ -52,6 +52,9 @@
               <div id="app">
                 <paysville-component> </paysville-component>
               </div>
+              <div id="appseconde">
+                <add-classes-component> </add-classes-component>
+              </div>
 
 
 

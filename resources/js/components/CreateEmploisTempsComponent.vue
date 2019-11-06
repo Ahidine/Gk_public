@@ -92,7 +92,7 @@
 								<td width="20%"> 
 									<select style="display:block" name="prof[]" class="browser-default custom-select" data-style="select-with-transition" title="" data-size="100" required>
 										<option  selected hidden value>Prof !</option>  
-										<option v-for="p in Prof" :value="p.id">{{p.employe.nom}}</option>                 
+										<option v-for="p in Prof" :value="p.id_prof">{{p.nom}}</option>                 
 									</select>
 								</td>
 								<td width="20%"> 
@@ -101,7 +101,7 @@
 										<option v-for="m in modules" :value="m.module.id">{{m.module.nom_module}}</option>                 
 									</select>
 								</td>
-									<input type="hidden" name="centre" :value="cent">
+								<input type="hidden" name="centre" :value="cent">
 								<td width="20%"> 
 									<select style="display:block" name="salles[]" class="browser-default custom-select" data-style="select-with-transition" title="" data-size="100" required>
 										<option  selected hidden value>Salle !</option>  
@@ -114,27 +114,27 @@
 									<i class="material-icons">close</i>
 									<div class="ripple-container"></div>
 								</button>
-								</td>
-							</tr>
+							</td>
+						</tr>
 
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
-
-
-
-
-
 		</div>
+
+
+
+
+
 	</div>
+</div>
 </div>
 
 </div>	
 </template>
 <script>
 export default {
-	props:['prof','salle','jours'],
+
 	data()
 	{
 		return {
@@ -152,9 +152,9 @@ export default {
 			0
 			],
 			show:true,
-			Jours:this.jours,
-			Prof:this.prof,
-			Salle:this.salle,
+			Jours:[],
+			Prof:[],
+			Salle:[],
 
 		}
 	},
@@ -166,12 +166,7 @@ export default {
 			
 			
 		})
-		axios.get('/getAllTrimestre')
-		.then(({data})=>{
-			this.trimestre = data
-			
-			
-		})
+
 
 	},
 	methods:
@@ -181,7 +176,10 @@ export default {
 			axios.get('/getGroupeByCentre/'+e)
 			.then(({data})=>{
 				groupes : {}
-				this.groupes = data
+				this.groupes = data.groupe
+				this.Jours=data.jours
+				this.Prof=data.prof
+				this.Salle=data.salles
 				this.cent=e
 				
 
@@ -191,13 +189,18 @@ export default {
 		getGroupe()
 		{
 			//console.log(this.groupe)
-			
+
 			axios.get('/getGroupe/'+this.groupe)
 			.then(({data})=>{
 				this.groupe=data
 				this.show=false
 
+				axios.get('/getTrimestreOfGroupe/'+this.groupe.id)
+				.then(({data})=>{
+					this.trimestre = data
 
+
+				})
 
 			})	
 			axios.get('/getModulesByGroupe/'+this.groupe)

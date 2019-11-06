@@ -50,8 +50,14 @@
 							<i class="material-icons">assignment</i>
 						</div>
 						<h4 class="card-title ">Affectation des modules
-							<button  type="button" class="btn btn-sm btn-rose float-right" data-toggle="modal" data-target=".bd-AddTrimestre-modal" >Add new Trimestre</button>
+
+
 						</h4>
+						<br>
+							<button  type="button" class="btn btn-sm btn-danger " data-toggle="modal" data-target=".bd-DeleteTrimestre-modal" >Supprimer un trimestre</button>
+							<button  type="button" class="btn btn-sm btn-success float-right" data-toggle="modal" data-target=".bd-AddTrimestre-modal" >Ajouter un Trimestre</button>
+
+							
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -114,7 +120,7 @@
 									<i class="material-icons">clear</i>
 								</button>
 								<div class="card-title">
-									<h4 >l'ajout d'une nouvelle trimestre </h4>
+									<h4 >l'ajout d'un nouveau trimestre </h4>
 									
 								</div>
 
@@ -236,7 +242,75 @@
 			</div>
 
 
-		</div>	
+		</div>
+
+		<div class="modal fade bd-DeleteTrimestre-modal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="card card-signup card-plain">
+						<div class="modal-header">
+							<div class="card-header card-header-danger text-center">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									<i class="material-icons">clear</i>
+								</button>
+								<div class="card-title">
+									<h4 >Suppression d'un trimestre </h4>
+									
+								</div>
+
+							</div>
+						</div>
+						<div class="modal-body">
+							<div class="card-body">
+
+								<div class="row justify-content-center">
+									<table class="table" id="datatables">
+										<thead class="text-primary">
+											<tr>
+												<th>Trimestre</th>
+												<th>date_début</th>
+												<th>date_fin</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr v-for="t in Trimestres">
+												<td>
+
+													{{t.nom}}
+
+												</td>
+												<td>{{t.date_debut}}</td>
+												<td>{{t.date_fin}}</td>
+												<td>
+													<form  method="post" @submit.prevent="SuppTrimestre(t)">
+														<button type="submit" class="btn btn-danger btn-link" data-original-title="" title="supprimer" >
+															<i class="material-icons">close</i>
+															<div class="ripple-container"></div>
+														</button>
+													</form>
+
+
+												</td>
+											</tr>
+
+
+										</tbody>
+									</table>	
+								</div>
+
+							</div>
+						</div>
+						<div class="modal-footer justify-content-start">
+							<button data-dismiss="modal"   class=" close btn btn-primary mt-4 btn-lg">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
 	</div>
 
 </template>
@@ -283,23 +357,23 @@ export default {
 			if(trim=='Trim1')
 			{
 				if (parseInt(e)==this.Modules[this.Modules.length-1].id) 
-			{
-				$('.Trim2').val(this.Modules[0].id)	
-				$('.Trim3').val(this.Modules[1].id)
-			}
-			else 
-				if (parseInt(e)==this.Modules[this.Modules.length-2].id) 
 				{
-					$('.Trim2').val(this.Modules[this.Modules.length-1].id)	
-					$('.Trim3').val(this.Modules[0].id)
+					$('.Trim2').val(this.Modules[0].id)	
+					$('.Trim3').val(this.Modules[1].id)
 				}
-				else{
-					$('.Trim2').val(parseInt(e)+1)	
-					$('.Trim3').val(parseInt(e)+2)
+				else 
+					if (parseInt(e)==this.Modules[this.Modules.length-2].id) 
+					{
+						$('.Trim2').val(this.Modules[this.Modules.length-1].id)	
+						$('.Trim3').val(this.Modules[0].id)
+					}
+					else{
+						$('.Trim2').val(parseInt(e)+1)	
+						$('.Trim3').val(parseInt(e)+2)
+					}
 				}
-			}
 
-			
+
 
 			},
 			chercher(cle) {
@@ -364,23 +438,69 @@ export default {
 				
 				this.dec=0
 			},
-			validation(id)
+			SuppTrimestre(t)
 			{
-				$(id).validate({
-					highlight: function(element) {
-						$(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
-						$(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
-					},
-					success: function(element) {
-						$(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
-						$(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
-					},
-					errorPlacement: function(error, element) {
-						$(element).closest('.form-group').append(error);
-					},
-				});
+
+			//console.log(id)
+			if (confirm('vous etes sur de supprimer ce trimestre ?'))
+			{
+
+				axios.delete('/Trimestre/'+t.id)
+				.then(resp=>{
+					this.Trimestres.splice(this.Trimestres.indexOf(t),1)
+					$.notify({
+						icon: "error",
+						message: " le trimestre   "+t.nom +" est supprimé"
+					}, {
+						type: 'danger',
+						timer: 3000,
+						placement: {
+							from: 'top',
+							align: 'center'
+						}
+					});
+					//window.location.reload()
+					//console.log(resp)
+				})
+				.catch( error => {
+					$.notify({
+						icon: "error",
+						message: "le trimestre "+t.nom+" déja affecté à un groupe merci de le désaffecter \n avant de le supprimé "
+					}, {
+						type: 'danger',
+						timer: 3000,
+						placement: {
+							from: 'top',
+							align: 'center'
+						}
+					});
+				})
+			}
+			else
+			{
+				//console.log('non'+id)
 			}
 
+
+		},
+		
+		validation(id)
+		{
+			$(id).validate({
+				highlight: function(element) {
+					$(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+					$(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
+				},
+				success: function(element) {
+					$(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+					$(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
+				},
+				errorPlacement: function(error, element) {
+					$(element).closest('.form-group').append(error);
+				},
+			});
 		}
+
 	}
-	</script>
+}
+</script>

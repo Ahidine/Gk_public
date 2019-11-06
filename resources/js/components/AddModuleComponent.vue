@@ -127,7 +127,7 @@
 			{
 			if (confirm('Vous êtes sûr de supprimer ce module ?'+row.id))
 			{
-				axios.delete('Module/'+row.id)
+				axios.delete('/Module/'+row.id)
 				.then(resp=>{
 					//window.location.reload()
 					this.model.splice(this.getElementByIndex(row),1);

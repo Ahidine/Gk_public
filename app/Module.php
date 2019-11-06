@@ -39,7 +39,7 @@ class Module extends Model
 //##########################
    public function niveau()
     {
-        return $this->belongsTo('App\Niveau');
+        return $this->belongsToMany('App\Niveau','niveau_module','module_id','niveau_id');
     }
 
    public function trimestre()

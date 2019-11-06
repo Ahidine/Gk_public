@@ -48,8 +48,9 @@ Vue.component('editgroupe-component', require('./components/EditGroupeComponent.
 Vue.component('indexgroupe-component', require('./components/IndexGroupeComponent.vue').default);
 Vue.component('create_emplois_temps-component', require('./components/CreateEmploisTempsComponent.vue').default);
 Vue.component('liste_users-component', require('./components/ListeUsersComponent.vue').default);
-
-
+Vue.component('add-classes-component', require('./components/AddClassComponent.vue').default);
+Vue.component('edit-classes-component', require('./components/UpdateClassComponent.vue').default);
+Vue.component('edit-emplois_temps-component', require('./components/EditEmploisComponent.vue').default);
 
 
 /**

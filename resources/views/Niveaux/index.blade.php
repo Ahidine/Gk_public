@@ -18,7 +18,7 @@
 
 
                 <div class="table-responsive">
-                  <table id="datatables" class="table table-striped table-no-bordered table-hover">
+                  <table id="datatables" class="table table-striped table-no-bordered table-hover" style="width: 100% !important">
                     <thead class="text-primary">
                       <th>
                           {{ __('Niveau') }}

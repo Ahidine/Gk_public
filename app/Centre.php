@@ -20,6 +20,10 @@ class Centre extends Model
     {
         return $this->hasMany('App\Charge');
     }
+       public function salle()
+    {
+        return $this->hasMany('App\Salle');
+    }
    public function activite()
     {
         return $this->hasMany('App\Activite');

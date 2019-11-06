@@ -22,6 +22,7 @@ class CreateAbsencesTable extends Migration
             $table->string('type');
             $table->bigInteger('employe_id')->nullable()->unsigned();
             $table->bigInteger('eleve_id')->nullable()->unsigned();
+            $table->string('seance')->nullable();
             $table->timestamps();
         });
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Trimestre;
+use App\Etude;
 use Illuminate\Http\Request;
+use App\Groupe;
 
 class TrimestreController extends Controller
 {
@@ -51,6 +53,11 @@ class TrimestreController extends Controller
     {
         return Trimestre::find($id);
     }
+    public function getTrimestreOfGroupe($id)
+    {
+    return $trimestre =  Groupe::find($id)->trimestre()->get();
+    // Trimestre::with('groupe')->where('groupe_id',$id)->get();
+    }
 
     /**
      * Display the specified resource.
@@ -92,8 +99,10 @@ class TrimestreController extends Controller
      * @param  \App\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trimestre $trimestre)
+    public function destroy( $trimestre)
     {
         //
+        Trimestre::find($trimestre)->delete();
+        return 1;
     }
 }
