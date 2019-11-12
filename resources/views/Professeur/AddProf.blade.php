@@ -136,7 +136,7 @@
   <label class="col-sm-2 col-form-label">Salaire Par seance</label>
   <div class="col-sm-6">
     <div class="form-group">
-     <input name="salaire" type="number" value=" {{ old('salaire') }}"  class="form-control" required>
+     <input name="salaire" type="number" step="any" value=" {{ old('salaire') }}"  class="form-control" required>
    </div>
  </div>
  <div class="col-sm-4">

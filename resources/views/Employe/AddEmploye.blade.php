@@ -123,7 +123,7 @@
   <label class="col-sm-2 col-form-label">Salaire</label>
   <div class="col-sm-6">
     <div class="form-group">
-     <input name="salaire" type="number" value=" {{ old('salaire') }}" class="form-control @error('salaire') is-invalid @enderror" required>
+     <input name="salaire" type="number" step="any" value=" {{ old('salaire') }}" class="form-control @error('salaire') is-invalid @enderror" required>
      @if ($errors->has('salaire'))
      <span class="error">{{ $errors->first('salaire') }}</span>
      @endif
